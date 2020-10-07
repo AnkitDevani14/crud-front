@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Application</title>
+</head>
+<body>
+    <div class="container">
+        <h1 style="justify-content: center;">Crud Application</h1>
+<br>
+<form method="POST" #registerUser="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label >First Name</label>
+      <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter First name" name="firstname"  #firstname="ngModel"  [(ngModel)]="users.firstname">
+     
+    </div>
+    <div class="form-group">
+      <label >Last Name</label>
+      <input type="text" class="form-control" placeholder="Entet a Last Name" name="lastname"  #lastname="ngModel"  [(ngModel)]="users.lastname">
+    </div>
+   
+    <div class="form-group">
+        <label >Mobile No</label>
+        <input type="text" class="form-control" placeholder="Entet a Mobile No" name="mobileno"  #mobileno="ngModel"  [(ngModel)]="users.mobileno">
+      </div>
+      <div class="form-group">
+        <label >Date of Birth</label>
+        <input type="Date" class="form-control" name="dateOfBirth"  #dateOfBirth="ngModel"  [(ngModel)]="users.dateOfBirth">
+      </div>
+    <button type="submit" class="btn btn-primary">ADD User</button>
+</form>
+
+    <hr>
+   
+    <h2>User Details</h2> <br>
+    <table class="table">
+        <thead>
+          <tr>
+           
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Mobile no</th>
+            <th scope="col">Date of Birth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of listUser">
+            
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.mobileNo}}</td>
+            <td>{{user.dateOfBirth }}</td>
+            <td><Button class="btn btn-info" (click)="editUser(user.id)">Edit</Button></td>
+            <td><Button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</Button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>
